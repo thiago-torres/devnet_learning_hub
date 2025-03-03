@@ -1,0 +1,20 @@
+<devices>
+  <device>
+    <nome>Roteador-Core</nome>
+    <ip>192.168.1.1</ip>
+    <modelo>Cisco ISR 4331</modelo>
+    <status>ativo</status>
+  </device>
+  <device>
+    <nome>Switch-Distribuição</nome>
+    <ip>192.168.1.2</ip>
+    <modelo>Cisco Catalyst 9300</modelo>
+    <status>ativo</status>
+  </device>
+  <device>
+    <nome>Firewall-Perímetro</nome>
+    <ip>192.168.1.254</ip>
+    <modelo>FortiGate 100F</modelo>
+    <status>inativo</status>
+  </device>
+</devices>

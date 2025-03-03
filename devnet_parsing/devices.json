@@ -1,0 +1,22 @@
+{
+    "devices": [
+      {
+        "nome": "Roteador-Core",
+        "ip": "192.168.1.1",
+        "modelo": "Cisco ISR 4331",
+        "status": "ativo"
+      },
+      {
+        "nome": "Switch-Distribuição",
+        "ip": "192.168.1.2",
+        "modelo": "Cisco Catalyst 9300",
+        "status": "ativo"
+      },
+      {
+        "nome": "Firewall-Perímetro",
+        "ip": "192.168.1.254",
+        "modelo": "FortiGate 100F",
+        "status": "inativo"
+      }
+    ]
+  }  
