@@ -1,0 +1,12 @@
+YANG SUITE
+https://app-8080-7531488392065102534.devenv-prod.us-west-1.devnetcloud.com
+
+user:developer pw: developer
+
+Obtain the device connection parameters
+Open a web browser tab to view the documentation for the IOS XE on Cat8kv AlwaysOn. Record the values for:
+
+The hostname (currently devnetsandboxiosxe.cisco.com)
+The username (currently admin)
+The password (currently C1sco12345)
+The NETCONF port (currently 830)
