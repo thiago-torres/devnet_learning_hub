@@ -3,6 +3,7 @@ import requests
 import json
 
 def main():
+    tenant_name = 'TRIPPLEH'
     url = f"https://{os.getenv('ACI_ADDRESS')}:443/api/aaaLogin.json"
     headers = {'Content-type': 'application/json'}
     body = {
@@ -16,18 +17,22 @@ def main():
     
     session = requests.Session()                                                #### Dessa forma o cookie será utilizado
     response = session.post(url=url, headers=headers, json=body, verify=False)  #### nas próximas requisições conforme abaixo
-    
-    # print(f"Login Response: {response.status_code}")
-    # print(f'Retorno: {response.json()}')
-    
-    tenant_url = f"https://{os.getenv('ACI_ADDRESS')}:443/api/node/class/fvTenant.json"
-    tenant_response = session.get(tenant_url, verify=False)
-    
-    # print(f"Tenant Request Response: {tenant_response}")
-    # print(f"Tenant Request Response: {tenant_response.json()}")
-    for tenant in tenant_response.json()['imdata']:
-        print(json.dumps(tenant, indent=4))
 
+    
+    tenant_url = f"https://{os.getenv('ACI_ADDRESS')}/api/node/mo/uni/tn-{tenant_name}.json"
+    tenant_data = {
+        "fvTenant": {
+            "attributes": {
+                "status": "deleted"
+            }
+        }
+    }
+
+    response = session.post(tenant_url, json=tenant_data, verify=False)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise Exception(f"Error deleting tenant: {response.status_code} - {response.text}")
 if __name__ == "__main__":
     main()
 

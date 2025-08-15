@@ -1,4 +1,5 @@
 import os
+import json
 import requests
 
 def main():
@@ -12,10 +13,20 @@ def main():
             }
         }
     }
+    print(url)
+    print(headers)
+    print(body)
+    session = requests.Session()
 
-    response = requests.post(url=url, headers=headers, json=body, verify=False)
+    print("[COOKIE] Session cookies:", session.cookies.get_dict())
+    print("[COOKIE] APIC-cookie:", session.cookies.get("APIC-cookie"))
 
-    print(response.json())  
+    response = session.post(url=url, headers=headers, json=body, verify=False)
+    
+    print("[COOKIE] Session cookies:", session.cookies.get_dict())
+    print("[COOKIE] APIC-cookie:", session.cookies.get("APIC-cookie"))
+
+    print(json.dumps(response.json(), indent=4))  
 
 if __name__ == "__main__":
     main()
